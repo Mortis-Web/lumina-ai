@@ -9,7 +9,6 @@ export default function useLenis() {
   useEffect(() => {
     lenis.current = new Lenis({
       smoothWheel: true,
-      smoothTouch: false,
     });
 
     function raf(time: number) {
