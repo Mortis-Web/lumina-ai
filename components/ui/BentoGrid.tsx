@@ -1,6 +1,6 @@
 'use client'
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 
@@ -13,7 +13,12 @@ import animationData from "@/data/confetti.json";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import MagicButton from "./MagicButton";
 import Image from "next/image";
-const GridGlobe = dynamic(() => import("@/components/ui/GridGlobe"), { ssr: false });
+import type { GlobeMethods } from 'react-globe.gl';
+
+const Globe = dynamic(() => import('react-globe.gl'), {
+  ssr: false,
+});
+
 
 export const BentoGrid = ({
   className,
@@ -22,6 +27,9 @@ export const BentoGrid = ({
   className?: string;
   children?: React.ReactNode;
 }) => {
+  // Use a proper type for the Globe ref
+
+
   return (
     <div
       className={cn(
@@ -45,6 +53,7 @@ export const BentoGridItem = ({
   imgClassName,
   titleClassName,
   spareImg,
+  isInView,
 }: {
   className?: string;
   id: number;
@@ -54,27 +63,53 @@ export const BentoGridItem = ({
   imgClassName?: string;
   titleClassName?: string;
   spareImg?: string;
+  isInView?:boolean;
 }) => {
+  type GlobeRef = {
+  controls: () => {
+    autoRotate: boolean;
+    autoRotateSpeed: number;
+    enableZoom: boolean;
+    enablePan: boolean;
+    enableDamping: boolean;
+  };
+};
+
+  const globeRef = useRef<GlobeMethods>();
+
+  // Media queries
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (!globeRef.current) return;
+
+    const controls = globeRef.current.controls();
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1;
+    controls.enableZoom = false;
+    controls.enablePan = true;
+    controls.enableDamping = true;
+  }, [isInView]);
+
   const leftLists = ["ReactJS", "Express", "Typescript"];
   const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
 
   const [copied, setCopied] = useState(false);
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+  // const defaultOptions = {
+  //   loop: copied,
+  //   autoplay: copied,
+  //   animationData: animationData,
+  //   rendererSettings: {
+  //     preserveAspectRatio: "xMidYMid slice",
+  //   },
+  // };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("hsu@jsmastery.pro");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
-
-const handleCopy = () => {
-  navigator.clipboard.writeText("hsu@jsmastery.pro");
-  setCopied(true);
-
-  setTimeout(() => setCopied(false), 2500);
-};
 
 
   return (
@@ -97,7 +132,9 @@ const handleCopy = () => {
         <div className="w-full h-full absolute">
           {img && (
             <Image
-            fill
+              fill
+              loading="lazy"
+              decoding="async"
               src={img}
               alt={img}
               className={cn(imgClassName, " object-cover object-center ")}
@@ -110,12 +147,14 @@ const handleCopy = () => {
         >
           {spareImg && (
             <Image
-            width={100}
-            height={100}
+              width={100}
+              height={100}
+              loading="lazy"
+              decoding="async"
               src={spareImg}
               alt={spareImg}
               //   width={220}
-              className="object-cover object-center w-full h-full"
+              className={` object-cover object-center w-full h-full  `}
             />
           )}
         </div>
@@ -129,23 +168,39 @@ const handleCopy = () => {
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+            " z-10 relative md:h-full min-h-60 flex flex-col px-5 p-5 lg:p-10"
           )}
         >
           {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
+          <div className="group-hover/bento:translate-x-2 transition duration-200">
+
           <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
             {description}
           </div>
           {/* add text-3xl max-w-96 , remove text-neutral-600 dark:text-neutral-300*/}
           {/* remove mb-2 mt-2 */}
           <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}
-          >
+            className={`font-sans text-lg lg:text-2xl text-balance max-w-96 font-bold z-10`}
+            >
             {title}
           </div>
+            </div>
 
           {/* for the github 3d globe */}
-          {/* {id === 2 && <GridGlobe />} */}
+          {id === 2 &&
+          <figure className="h-50 drop-shadow-[0px_0px_20px_#1E609F] -mt-20 flex items-start justify-center">
+
+          <Globe
+          ref={globeRef}
+          width={600}
+          height={600}
+          showAtmosphere
+          showGraticules
+          globeImageUrl="https://unpkg.com/three-globe/example/img/earth-day.jpg"
+          backgroundColor="rgba(0,0,0,0)"
+          />
+          </figure>
+        }
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -188,12 +243,12 @@ const handleCopy = () => {
                   }`}
               >
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
-<Lottie
-  animationData={animationData}
-  loop={copied}
-  autoplay={copied}
-  style={{ width: 400, height: 200 }}
-/>
+                <Lottie
+                  animationData={animationData}
+                  loop={copied}
+                  autoplay={copied}
+                  style={{ width: 400, height: 200 }}
+                />
               </div>
 
               <MagicButton

@@ -3,12 +3,12 @@
 import React from "react";
 
 import { companies, testimonials } from "@/data";
-import { InfiniteMovingCards } from "./ui/InfiniteCards";
 import Image from "next/image";
+import { InfiniteMovingCards } from "./ui/InfiniteCards";
 
 const Clients = () => {
   return (
-    <section id="testimonials" className="py-20">
+    <section id="testimonials" className="lg:pt-30 sm:pt-20 pt-15">
       <h1 className="heading">
         Kind words from
         <span className="text-purple"> satisfied clients</span>
@@ -33,12 +33,16 @@ const Clients = () => {
                 <Image
                 height={100}
                 width={100}
+                loading="lazy"
+                decoding="async"
                   src={company.img}
                   alt={company.name}
                   className="md:w-10 w-5"
                 />
                 <Image
                 height={100}
+                                loading="lazy"
+                decoding="async"
                   src={company.nameImg}
                   alt={company.name}
                   width={company.id === 4 || company.id === 5 ? 100 : 150}

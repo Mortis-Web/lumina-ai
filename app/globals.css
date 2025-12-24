@@ -265,8 +265,11 @@ html {
     h5,
     h6,
     p {
-        @apply max-w-fit;
+        @apply  text-balance max-w-7xl;
     }
+h1{
+    @apply mx-auto
+}
 }
 
 @utility container {
@@ -279,9 +282,8 @@ html {
     transform-style: preserve-3d;
     transition:
         transform 0.1s,
-        border 0.3s,
-        box-shadow 0.3s ease-in-out;
-    will-change: transform, scale;
+        border 0.3s;
+    will-change: transform;
 }
 
 @utility tilt-wrapper {
@@ -292,10 +294,19 @@ html {
     padding: 1rem !important;
 }
 
+@utility overlay{
+    @apply relative isolate overflow-hidden;
+}
+
+.overlay::after{
+        @apply absolute z-0 w-full h-full bg-linear-to-b from-30% from-transparent to-black-100 [content:'']
+    }
+
 @layer components {
     .team:has(article:hover) article:not(:hover) {
         @apply -z-30 scale-90 blur-md;
     }
+
 
     footer a {
         @apply ease-elastic transition-all duration-300 text-shadow-md hover:translate-x-3;
@@ -400,14 +411,20 @@ html {
 
 /* Usage example */
 .fade-slide-element {
-  animation: fadeSlideDown 0.5s ease-out 1s forwards;
+  animation: fadeSlideDown 0.35s ease-out 0.5s forwards;
   opacity: 0; /* ensure it starts invisible */
 }
 
 .fade-slide-element-slow {
-  animation: fadeSlideDown 0.5s ease-out 1.5s forwards;
+  animation: fadeSlideDown 0.35s ease-out 0.75s forwards;
   opacity: 0; /* ensure it starts invisible */
 }
+
+.fade-slide-element-slower {
+  animation: fadeSlideDown 0.35s ease-out 0.9s forwards;
+  opacity: 0; /* ensure it starts invisible */
+}
+
 
 
 

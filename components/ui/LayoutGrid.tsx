@@ -83,6 +83,8 @@ const BlurImage = ({ card }: { card: Card }) => {
   return (
     <Image
       src={card.thumbnail}
+                      loading="lazy"
+                decoding="async"
       //   change image scale 500 to 100
       height="100"
       width="100"

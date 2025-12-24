@@ -1,58 +1,44 @@
 'use client'
-import React from "react";
-import dynamic from "next/dynamic";
+import PixelCard from "@/components/ui/PixelCard";
 import { AnimatePresence, motion } from "framer-motion";
-const CanvasRevealEffect = dynamic(
-  () => import("@/components/ui/CanvasRevealEffect"),
-  { ssr: false } // important!
-);
+import dynamic from "next/dynamic";
+import React from "react";
 
 
 const Approach = () => {
   return (
-    <section className="w-full py-20">
+    <section className="w-full lg:pt-30 sm:pt-20 pt-15">
       <h1 className="heading">
         My <span className="text-purple">approach</span>
       </h1>
       {/* remove bg-white dark:bg-black */}
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
         {/* add des prop */}
+      <PixelCard           colors="#0ea5e9,#7dd3fc,#e0f2fe,#38bdf8">
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
           des="We'll collaborate to map out your website's goals, target audience,
           and key functionalities. We'll discuss things like site structure,
           navigation, and content requirements."
-        >
-
-          {/* <CanvasRevealEffect
-            animationSpeed={5.1}
-            // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
-            containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
-          /> */}
+          >
         </Card>
+          </PixelCard>
+      <PixelCard
+colors="#4d7c0f,#3f6212,#365314,#4d7c0f"      >
+
         <Card
           title="Development & Progress Update"
           icon={<AceternityIcon order="Phase 2" />}
           des="Once we agree on the plan, I cue my lofi playlist and dive into
           coding. From initial sketches to polished code, I keep you updated
           every step of the way."
-        >
-          {/* <CanvasRevealEffect
-            animationSpeed={3}
-            // change bg-black to bg-pink-900
-            containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
-            colors={[
-              // change the colors of the
-              [255, 166, 158],
-              [221, 255, 247],
-            ]}
-            dotSize={2}
-          /> */}
-          {/* Radial gradient for the cute fade */}
-          {/* remove this one */}
+          >
           <div className="absolute inset-0 mask-[radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
         </Card>
+          </PixelCard>
+          <PixelCard colors="#665d99,#a78bfa,#d8b4fe,#c4b5fd">
+
         <Card
           title="Development & Launch"
           icon={<AceternityIcon order="Phase 3" />}
@@ -60,12 +46,9 @@ const Approach = () => {
           I'll translate everything into functional code, building your website
           from the ground up."
         >
-          {/* <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
-            colors={[[125, 211, 252]]}
-          /> */}
+        =
         </Card>
+            </PixelCard>
       </div>
     </section>
   );
