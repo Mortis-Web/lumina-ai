@@ -70,7 +70,7 @@ export const PinPerspective = ({
     // change w-96 to w-full
     <motion.div className="pointer-events-none w-full h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
-        <div className="absolute top-0 inset-x-0  flex justify-center">
+        <div className="absolute top-20 inset-x-0  flex justify-center">
           <a
             href={href}
             target={"_blank"}
@@ -80,7 +80,7 @@ export const PinPerspective = ({
               {title}
             </span>
 
-            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
+            <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/10 via-emerald-400/90 to-emerald-400/10 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
           </a>
         </div>
 

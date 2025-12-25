@@ -2,6 +2,7 @@
 import PixelCard from "@/components/ui/PixelCard";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import React from "react";
 
 
@@ -12,9 +13,18 @@ const Approach = () => {
         My <span className="text-purple">approach</span>
       </h1>
       {/* remove bg-white dark:bg-black */}
-      <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
+      <div className="my-20 flex flex-wrap items-center justify-center w-full gap-8">
         {/* add des prop */}
-      <PixelCard           colors="#0ea5e9,#7dd3fc,#e0f2fe,#38bdf8">
+
+      <figure className="relative isolate">
+  <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
+
+      <PixelCard
+              colors="#0ea5e9,#7dd3fc,#e0f2fe,#38bdf8">
+
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
@@ -24,12 +34,21 @@ const Approach = () => {
           >
         </Card>
           </PixelCard>
+          </figure>
+
+          <figure className="relative isolate">
+ <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
+
       <PixelCard
-colors="#4d7c0f,#3f6212,#365314,#4d7c0f"      >
+colors="#16a34a,#22c55e,#4ade80,#14532d">
 
         <Card
-          title="Development & Progress Update"
+          title="Development & Progress Update World Wide"
           icon={<AceternityIcon order="Phase 2" />}
+          approachImg="/globe.png"
           des="Once we agree on the plan, I cue my lofi playlist and dive into
           coding. From initial sketches to polished code, I keep you updated
           every step of the way."
@@ -37,18 +56,29 @@ colors="#4d7c0f,#3f6212,#365314,#4d7c0f"      >
           <div className="absolute inset-0 mask-[radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
         </Card>
           </PixelCard>
+            </figure>
+
+
+            <figure className="relative isolate">
+               <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
+              <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
+
           <PixelCard colors="#665d99,#a78bfa,#d8b4fe,#c4b5fd">
 
         <Card
           title="Development & Launch"
           icon={<AceternityIcon order="Phase 3" />}
+
           des="This is where the magic happens! Based on the approved design,
           I'll translate everything into functional code, building your website
           from the ground up."
-        >
-        =
+          >
+
         </Card>
             </PixelCard>
+          </figure>
       </div>
     </section>
   );
@@ -61,11 +91,13 @@ const Card = ({
   icon,
   children,
   // add this one for the desc
+  approachImg,
   des,
 }: {
   title: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
+approachImg?:string;
   des: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
@@ -74,21 +106,10 @@ const Card = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       // change h-[30rem] to h-[35rem], add rounded-3xl
-      className="border border-black/[0.2] group/canvas-card flex items-center justify-center
-       dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl "
-      style={{
-        //   add these two
-        //   you can generate the color from here https://cssgradient.io/
-        background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      }}
+      className="border border-black/20  group/canvas-card flex items-center justify-center
+       dark:border-white/20  max-w-sm w-full mx-auto p-4 relative h-120 xl:h-140 rounded-3xl "
+
     >
-      {/* change to h-10 w-10 , add opacity-30  */}
-      <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
 
      <AnimatePresence>
   <motion.div
@@ -127,6 +148,13 @@ const Card = ({
           {des}
         </p>
       </div>
+      <figure className="absolute z-10 pointer-events-none flex items-start justify-start py-4 w-full h-full inset-0 m-auto">
+       {approachImg &&
+        <Image src={approachImg} fill alt="approach img" className="hovering object-contain mt-auto h-auto! object-center"/>
+       }
+
+      </figure>
+        <Image src="/spotLight.png" fill alt="spotlight" className="object-contain  h-auto! object-center"/>
     </div>
   );
 };
@@ -152,23 +180,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
       </button>
     </div>
     // remove the svg and add the button
-    // <svg
-    //   width="66"
-    //   height="65"
-    //   viewBox="0 0 66 65"
-    //   fill="none"
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   className="h-10 w-10 text-black dark:text-white group-hover/canvas-card:text-white "
-    // >
-    //   <path
-    //     d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-    //     stroke="currentColor"
-    //     strokeWidth="15"
-    //     strokeMiterlimit="3.86874"
-    //     strokeLinecap="round"
-    //     style={{ mixBlendMode: "darken" }}
-    //   />
-    // </svg>
+
   );
 };
 

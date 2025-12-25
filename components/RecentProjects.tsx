@@ -13,7 +13,7 @@ const RecentProjects = () => {
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
       </h1>
-      <div className="grid max-w-7xl mx-auto grid-cols-1 md:grid-cols-2 p-8  gap-8 mt-10">
+      <div className="grid max-w-7xl mx-auto grid-cols-1 md:grid-cols-2 p-4 xs:p-8  gap-8 mt-10">
         {projects.map((item) => (
           <div
             className="lg:min-h-[35rem] min-h-[28rem]  flex items-center justify-center  w-full"
@@ -28,11 +28,13 @@ const RecentProjects = () => {
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <Image fill src="/bg.png" alt="bgimg"
+                  <Image fill   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+ src="/bg.png" alt="bgimg"
                              loading="lazy"
                 decoding="async"/>
                 </div>
                 <Image fill
+
                                 loading="lazy"
                 decoding="async"
                   src={item.img}
@@ -55,7 +57,7 @@ const RecentProjects = () => {
                 {item.des}
               </p>
 
-              <div className="flex items-center justify-between mt-7 mb-3">
+              <div className="flex items-center justify-between mt-7 flex-wrap gap-2 mb-3">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
@@ -68,7 +70,8 @@ const RecentProjects = () => {
                       <Image
                                       loading="lazy"
                 decoding="async"
-                      fill src={icon} alt="icon5" className="p-2" />
+                      width={40}
+                      height={40} src={icon} alt="icon5" className="p-2" />
                     </div>
                   ))}
                 </div>

@@ -1,18 +1,18 @@
 
+import use3DTilt from '@/app/providers/use3DTilt';
+import InfoBullet from '@/components/ui/InfoBullet';
+import LiquidEtherWrapper from '@/components/ui/LiquidEtherWrapper';
 import MagicButton from '@/components/ui/MagicButton';
 import { Spotlight } from '@/components/ui/Spotlight';
+import useLenis from '@/lib/lenis';
 import { cn } from '@/lib/utils';
-import { FaArrowTrendUp } from 'react-icons/fa6';
-import { GridPattern } from './ui/GridPattern';
-import Starfield from './ui/Starfield';
 import Image from 'next/image';
-import InfoBullet from '@/components/ui/InfoBullet';
 import { FaHatWizard } from "react-icons/fa";
+import { FaArrowTrendUp } from 'react-icons/fa6';
 import { GiFluffyWing } from "react-icons/gi";
 import { MdOutlineSpeed } from "react-icons/md";
-import use3DTilt from '@/app/providers/use3DTilt';
-import useLenis from '@/lib/lenis';
-import LiquidEther from '@/components/ui/LiquidEther';
+import { GridPattern } from './ui/GridPattern';
+import Starfield from './ui/Starfield';
 
 const Hero = () => {
   use3DTilt()
@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <header className="relative isolate h-screen overflow-hidden pb-20 pt-36">
+    <header className="relative isolate max-sm:max-h-150 h-screen overflow-hidden pb-20 pt-36">
       {/* Glow background */}
       <div
         className="absolute inset-0 z-10"
@@ -38,7 +38,7 @@ const Hero = () => {
 
       <figure className="pointer-events-none">
         <Spotlight
-          className="-left-10 -top-40 h-screen md:-left-32 md:-top-20"
+          className="-left-10 -top-40 h-full md:-left-32 md:-top-20"
           fill="white"
         />
 
@@ -48,8 +48,8 @@ const Hero = () => {
         />
       </figure>
 
-      <figure className="absolute inset-0 z-10 m-auto h-screen w-full text-blue-300 opacity-50">
-        <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
+      <figure className="absolute inset-0 z-10 m-auto h-full w-full text-blue-300 opacity-50">
+        <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
           <GridPattern
             squares={[
               [4, 4],
@@ -71,31 +71,16 @@ const Hero = () => {
               'inset-0 m-auto h-[200%]'
             )}
           />
+          <LiquidEtherWrapper/>
+
         </div>
       </figure>
 
-      <figure className="pointer-events-none absolute inset-0 m-auto h-screen w-full bg-[#0b011d]">
+      <figure className="pointer-events-none absolute inset-0 m-auto h-full w-full bg-[#0b011d]">
         <Starfield />
-        <LiquidEther
-    colors={[ '#5227FF', '#FF9FFC', '#B19EEF' ]}
-    mouseForce={10}
-    cursorSize={100}
-    isViscous={false}
-    viscous={20}
-    iterationsViscous={32}
-    iterationsPoisson={32}
-    resolution={0.5}
-    isBounce={false}
-    autoDemo={true}
-    autoSpeed={0.5}
-    autoIntensity={2.2}
-    takeoverDuration={0.25}
-    autoResumeDelay={3000}
-    autoRampDuration={0.6}
-  />
 
       </figure>
-      <figure className="absolute  z-100 bg-transparent inset-0 m-auto flex h-screen w-full flex-col items-center justify-center gap-10  px-5 sm:px-10">
+      <figure className="absolute  z-100 bg-transparent inset-0 m-auto flex h-full w-full flex-col items-center justify-center gap-10  px-5 sm:px-10">
         <Image
         width={100}
         height={100}

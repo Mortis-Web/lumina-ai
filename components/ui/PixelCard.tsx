@@ -38,9 +38,9 @@ class Pixel {
     this.x = x;
     this.y = y;
     this.color = color;
-    this.speed = Math.random() * 0.9 * speed;
+    this.speed = Math.random() * 2 * speed;
     this.size = 0;
-    this.sizeStep = Math.random() * 0.4;
+    this.sizeStep = Math.random() * 0.8;
     this.minSize = 0.5;
     this.maxSizeInteger = 2;
     this.maxSize =
@@ -111,7 +111,7 @@ interface PixelCardProps {
 export default function PixelCard({
   colors = '#fef08a,#fde047,#eab308',
   gap = 3,
-  speed = 20,
+  speed = 100,
   className = '',
   children,
 }: PixelCardProps): JSX.Element {
@@ -226,15 +226,17 @@ const handleAnimation = (name: PixelMethod) => {
   return (
     <div
       ref={containerRef}
-      className={`relative isolate h-[400px] w-full overflow-hidden rounded-[25px] border border-[#27272a] ${className}`}
+      className={`relative isolate max-w-fit  w-full z-100  rounded-3xl overflow-hidden ${className}`}
       onMouseEnter={() => handleAnimation('appear')}
       onMouseLeave={() => handleAnimation('disappear')}
       tabIndex={0}
     >
+
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
-      <div className="relative z-10 flex  flex-col h-full w-full items-center justify-center">
+      <div className="relative z-1000 flex  flex-col h-full w-full items-center justify-center">
         {children}
+
       </div>
     </div>
   );

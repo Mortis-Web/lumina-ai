@@ -118,7 +118,8 @@ export const InfiniteMovingCards = ({
                 {/* add this div for the profile img */}
                 <div className="me-3">
                   <Image
-                  fill                 loading="lazy"
+                  height={60}
+                  width={60}                 loading="lazy"
                 decoding="async" src="/profile.svg" alt="profile" />
                 </div>
                 <span className="flex flex-col gap-1">

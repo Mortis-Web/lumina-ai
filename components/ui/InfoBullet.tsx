@@ -23,7 +23,7 @@ const InfoBullet: React.FC<InfoBulletProps> = ({ text, icon }) => {
         shadow-[inset_0px_0px_10px_var(--primary_color)]
       "
     >
-      {icon && <span className="flex text-[#bc61f8]/40 items-center">{icon}</span>}
+      {icon && <span className="flex text-[#bc61f8]/30 items-center">{icon}</span>}
       <span>{text}</span>
     </span>
   );

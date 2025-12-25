@@ -14,6 +14,7 @@ import { BackgroundGradientAnimation } from "./GradientBg";
 import MagicButton from "./MagicButton";
 import Image from "next/image";
 import type { GlobeMethods } from 'react-globe.gl';
+import GridMotion from "@/components/ui/GridMotion";
 
 const Globe = dynamic(() => import('react-globe.gl'), {
   ssr: false,
@@ -28,6 +29,8 @@ export const BentoGrid = ({
   children?: React.ReactNode;
 }) => {
   // Use a proper type for the Globe ref
+
+  // note: you'll need to make sure the parent container of this component is sized properly
 
 
   return (
@@ -111,6 +114,43 @@ export const BentoGridItem = ({
     setTimeout(() => setCopied(false), 2500);
   };
 
+const items = [
+  'Smart Insights',
+  <div key='jsx-item-1'>Generate AI-Powered Reports</div>,
+  '/aiBG3.jpg',
+  'Automated Workflows',
+  <div key='jsx-item-2'>Boost Productivity with AI</div>,
+  'Collaborative Dashboard',
+  <div key='jsx-item-3'>Team AI Collaboration Tools</div>,
+  'aiBG2.webp',
+  'Real-Time Analytics',
+  <div key='jsx-item-4'>Visualize Data Instantly</div>,
+  'Predictive Modeling',
+  <div key='jsx-item-5'>AI Forecasts for Business</div>,
+  '/aiBG2.webp',
+  'Custom AI Templates',
+  <div key='jsx-item-6'>Tailored for Your Workflow</div>,
+  'Intelligent Alerts',
+  <div key='jsx-item-7'>Stay Ahead with AI Notifications</div>,
+  '/aiBG.png',
+  'Data Security',
+  <div key='jsx-item-8'>Enterprise-Grade Encryption</div>,
+  'Seamless Integrations',
+  <div key='jsx-item-9'>Connect Your Favorite Apps</div>,
+  '/aiBG.png',
+  'AI-Powered Insights',
+  <div key='jsx-item-10'>Discover Opportunities Instantly</div>,
+  'Smart Recommendations',
+  <div key='jsx-item-11'>Personalized Suggestions by AI</div>,
+  '/aiBG2.webp',
+  '24/7 Support',
+  <div key='jsx-item-12'>Always-On AI Assistance</div>,
+  'User-Friendly Interface',
+  <div key='jsx-item-13'>Intuitive & Clean Design</div>,
+  'aiBG2.webp',
+  'Scalable Architecture',
+  // Add more AI-inspired items if needed
+];
 
   return (
     <div
@@ -172,6 +212,7 @@ export const BentoGridItem = ({
           )}
         >
           {/* change the order of the title and des, font-extralight, remove text-xs text-neutral-600 dark:text-neutral-300 , change the text-color */}
+          {id !== 3 &&
           <div className="group-hover/bento:translate-x-2 transition duration-200">
 
           <div className="font-sans font-extralight md:max-w-32 md:text-xs lg:text-base text-sm text-[#C1C2D3] z-10">
@@ -185,6 +226,7 @@ export const BentoGridItem = ({
             {title}
           </div>
             </div>
+            }
 
           {/* for the github 3d globe */}
           {id === 2 &&
@@ -204,32 +246,37 @@ export const BentoGridItem = ({
 
           {/* Tech stack list div */}
           {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              {/* tech stack lists */}
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {leftLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
-                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-                {rightLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
-                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+            // <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
+            //   {/* tech stack lists */}
+            //   <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+            //     {leftLists.map((item, i) => (
+            //       <span
+            //         key={i}
+            //         className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
+            //         lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+            //       >
+            //         {item}
+            //       </span>
+            //     ))}
+            //     <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
+            //   </div>
+            //   <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+            //     <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
+            //     {rightLists.map((item, i) => (
+            //       <span
+            //         key={i}
+            //         className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
+            //         lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+            //       >
+            //         {item}
+            //       </span>
+            //     ))}
+            //   </div>
+            // </div>
+            <div className="w-full h-full absolute inset-0 m-auto -z-1">
+            <figure className="absolute select-none -z-10 w-full h-full inset-0 m-auto">
+            <GridMotion items={items} />
+            </figure>
             </div>
           )}
           {id === 6 && (

@@ -1,5 +1,5 @@
+import THREE from '@/lib/three';
 import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
 
 export interface LiquidEtherProps {
   mouseForce?: number;
@@ -449,7 +449,7 @@ export default function LiquidEther({
         vec2 spot_new3 = spot_new - error / 2.0;
         vec2 vel_2 = texture2D(velocity, spot_new3).xy;
         vec2 spot_old2 = spot_new3 - vel_2 * dt * ratio;
-        vec2 newVel2 = texture2D(velocity, spot_old2).xy; 
+        vec2 newVel2 = texture2D(velocity, spot_old2).xy;
         gl_FragColor = vec4(newVel2, 0.0, 0.0);
     }
 }

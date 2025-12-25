@@ -8,8 +8,14 @@ import ClientOnly from "@/components/ui/ClientOnly";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Adrian's Portfolio",
-  description: "Modern & Minimal JS Mastery Portfolio",
+  title: "Lumina AI",
+  description: "AI Chatbot SaaS Platform – Intelligent, Fast, and Conversational",
+  keywords: ["AI chatbot", "SaaS", "Lumina AI", "ChatGPT", "AI assistant"],
+  authors: [{ name: "mortis-web", url: "https://lumina-ai-1eua-43ixgfi0w-mortis-webs-projects.vercel.app/" }],
+  icons: {
+    icon: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
