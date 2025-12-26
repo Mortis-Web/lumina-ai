@@ -11,6 +11,7 @@ import Experience from "@/components/Experience";
 import RecentProjects from "@/components/RecentProjects";
 // import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { LenisProvider } from "@/app/providers/LenisProvider";
+import Navbar from "@/components/Navbar";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto ">
         {/* <FloatingNav navItems={navItems} /> */}
       <div className="w-full">
+        <Navbar/>
         <Hero />
         <Grid />
         <RecentProjects />

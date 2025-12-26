@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <header className="relative isolate max-sm:max-h-150 h-screen overflow-hidden pb-20 pt-36">
+    <header id='home' className="relative isolate max-sm:max-h-150 h-screen overflow-hidden pb-20 pt-36">
       {/* Glow background */}
       <div
         className="absolute inset-0 z-10"

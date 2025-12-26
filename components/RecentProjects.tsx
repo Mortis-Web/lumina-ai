@@ -8,7 +8,7 @@ import { PinContainer } from "./ui/Pin";
 
 const RecentProjects = () => {
   return (
-    <div className="lg:pt-30 sm:pt-20 pt-15">
+    <section id="projects" className="lg:pt-30 sm:pt-20 pt-15">
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
@@ -43,7 +43,7 @@ const RecentProjects = () => {
                 />
               </div>
 
-              <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="font-bold m-0 lg:text-2xl md:text-xl text-base line-clamp-1">
                 {item.title}
               </h1>
 
@@ -57,7 +57,7 @@ const RecentProjects = () => {
                 {item.des}
               </p>
 
-              <div className="flex items-center justify-between mt-7 flex-wrap gap-2 mb-3">
+              <div className="flex items-center justify-between mt-auto xs:mt-7 flex-wrap gap-2 ">
                 <div className="flex items-center">
                   {item.iconLists.map((icon, index) => (
                     <div
@@ -87,7 +87,7 @@ const RecentProjects = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

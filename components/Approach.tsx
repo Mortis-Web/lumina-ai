@@ -8,7 +8,7 @@ import React from "react";
 
 const Approach = () => {
   return (
-    <section className="w-full lg:pt-30 sm:pt-20 pt-15">
+    <section id="approach" className="w-full lg:pt-30 sm:pt-20 pt-15">
       <h1 className="heading">
         My <span className="text-purple">approach</span>
       </h1>

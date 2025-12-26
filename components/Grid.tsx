@@ -13,7 +13,7 @@ const Grid = () => {
       className="lg:pt-30 sm:pt-20 pt-15 mx-auto max-w-7xl"
     >
       <h1 className="heading">
-        A small selection of <span className="text-purple">recent projects</span>
+        Turning ideas into <span className="text-purple">real experiences</span>
       </h1>
 
       <BentoGrid className="w-full pt-15">
