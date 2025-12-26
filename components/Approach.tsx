@@ -154,7 +154,7 @@ approachImg?:string;
        }
 
       </figure>
-        <Image src="/spotLight.png" fill alt="spotlight" className="object-contain  h-auto! object-center"/>
+        <Image src="/spotlight.png" fill alt="spotlight" className="object-contain  h-auto! object-center"/>
     </div>
   );
 };
