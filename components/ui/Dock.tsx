@@ -159,7 +159,7 @@ export default function Dock({
   return (
     <motion.div
       style={{ height, scrollbarWidth: 'none' }}
-      className="mx-2 flex max-w-full origin-bottom items-center max-xs:scale-75"
+      className="mx-2 max-xs:mb-2 flex max-w-full origin-bottom items-center max-xs:scale-70"
     >
       <motion.div
         onMouseMove={({ pageX }) => {

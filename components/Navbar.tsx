@@ -13,15 +13,33 @@ import useLenis from '@/lib/lenis';
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const lenisRef = useLenis(); // useRef<Lenis | null>
+useEffect(() => {
+  const footer = document.querySelector('footer');
 
-  useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > 500);
-    };
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    let hide = scrollY < 500;
+
+    if (footer) {
+      const footerTop =
+        footer.getBoundingClientRect().top + scrollY;
+
+      // hide when footer is visible
+      if (scrollY + windowHeight >= footerTop) {
+        hide = true;
+      }
+    }
+
+    setVisible(!hide);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // run once on mount
+
+  return () => window.removeEventListener('scroll', onScroll);
+}, []);
 
   const scrollTo = (selector: string) => {
     if (lenisRef.current) {
