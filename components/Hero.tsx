@@ -93,13 +93,13 @@ const Hero = () => {
         <div className='flex items-center fade-slide-element-slow px-4 flex-wrap gap-4 justify-center'>
           <span className='tilt-wrapper'>
 
-        <InfoBullet text="Smart Magic" icon={<FaHatWizard />} />
+        <InfoBullet text="Instant Innovation" icon={<FaHatWizard />} />
           </span>
 <span className="tilt-wrapper">
-  <InfoBullet text="Neural Wings" icon={<GiFluffyWing />} />
+  <InfoBullet text="Digital Intelligence" icon={<GiFluffyWing />} />
 </span>
 <span className="tilt-wrapper">
-  <InfoBullet text="Instant Speed" icon={<MdOutlineSpeed />} />
+  <InfoBullet text="Future-Ready Code" icon={<MdOutlineSpeed />} />
 </span>
 
 
