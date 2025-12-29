@@ -15,22 +15,33 @@ export default function LiquidEtherWrapper() {
   }, []);
 
   return (
+
     <LiquidEther
-      colors={['#5227FF', '#FF9FFC', '#B19EEF']}
-      mouseForce={10}       // less aggressive
-      cursorSize={isSmallScreen ? 75 : 100}     // smaller cursor effect
-      isViscous={false}
-      viscous={isSmallScreen ? 15 : 20}        // less viscous
-      iterationsViscous={isSmallScreen ? 22 : 32}
-      iterationsPoisson={isSmallScreen ? 22 : 32}
-      resolution={0.5}
-      isBounce={false}
-      autoDemo={true}
-      autoSpeed={0.5}   // slower auto demo
-      autoIntensity={isSmallScreen ? 1.2 : 2.2} // less intense
-      takeoverDuration={0.25}
-      autoResumeDelay={1000}
-      autoRampDuration={0.6}
-    />
+  colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+
+  /* === CORE PERFORMANCE FIXES === */
+  resolution={isSmallScreen ? 0.22 : 0.32}
+
+  iterationsPoisson={isSmallScreen ? 10 : 14}
+  iterationsViscous={isSmallScreen ? 0 : 8}
+  isViscous={false}
+
+  BFECC={!isSmallScreen}   // VERY important
+
+  /* === INTERACTION === */
+  mouseForce={isSmallScreen ? 6 : 10}
+  cursorSize={65}
+
+  /* === AUTO DEMO === */
+  autoDemo={!isSmallScreen}
+  autoSpeed={0.35}
+  autoIntensity={isSmallScreen ? 1.0 : 1.6}
+  takeoverDuration={0.25}
+  autoResumeDelay={1200}
+  autoRampDuration={0.6}
+
+  isBounce={false}
+/>
+
   );
 }
