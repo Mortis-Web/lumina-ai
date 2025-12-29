@@ -16,14 +16,14 @@ const RecentProjects = () => {
       <div className="grid max-w-7xl mx-auto grid-cols-1 md:grid-cols-2 p-4 xs:p-8  gap-8 mt-10">
         {projects.map((item) => (
           <div
-            className="lg:min-h-[35rem] min-h-[28rem]  flex items-center justify-center  w-full"
+            className="lg:min-h-140 min-h-100 xs:min-h-112  flex items-center justify-center w-full"
             key={item.id}
           >
             <PinContainer
               title="/ui.aceternity.com"
               href="https://twitter.com/mannupaaji"
             >
-              <div className="relative flex items-center justify-center sm:w-full w-[80vw] overflow-hidden h-full max-h-60 lg:max-h-80 mb-10">
+              <div className="relative flex items-center justify-center sm:w-full w-full xs:w-[80vw] overflow-hidden h-full  xs:max-h-60 lg:max-h-80 mb-4 xs:mb-10">
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
@@ -43,7 +43,7 @@ const RecentProjects = () => {
                 />
               </div>
 
-              <h1 className="font-bold m-0 lg:text-2xl md:text-xl text-base line-clamp-1">
+              <h1 className="font-bold min-h-fit m-0 lg:text-2xl md:text-xl text-base line-clamp-1">
                 {item.title}
               </h1>
 

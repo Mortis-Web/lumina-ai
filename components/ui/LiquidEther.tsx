@@ -53,6 +53,7 @@ interface LiquidEtherWebGL {
 }
 
 const defaultColors = ['#5227FF', '#FF9FFC', '#B19EEF'];
+const isTouch = 'ontouchstart' in window;
 
 export default function LiquidEther({
   mouseForce = 20,
@@ -68,7 +69,7 @@ export default function LiquidEther({
   colors = defaultColors,
   style = {},
   className = '',
-  autoDemo = true,
+  autoDemo = isTouch,
   autoSpeed = 0.5,
   autoIntensity = 2.2,
   takeoverDuration = 0.25,
@@ -300,7 +301,7 @@ export default function LiquidEther({
         this.diff.subVectors(this.coords, this.coords_old);
         this.coords_old.copy(this.coords);
         if (this.coords_old.x === 0 && this.coords_old.y === 0) this.diff.set(0, 0);
-        if (this.isAutoActive && !this.takeoverActive) this.diff.multiplyScalar(this.autoIntensity);
+        if (this.isAutoActive && !this.takeoverActive) this.diff.clampLength(0, 0.03);
       }
     }
     const Mouse = new MouseClass();
@@ -818,7 +819,10 @@ export default function LiquidEther({
         super.update();
       }
     }
-
+const isLowEnd =
+  navigator.hardwareConcurrency <= 4 ||
+  window.devicePixelRatio > 2;
+const useBFECC = !isLowEnd;
     class Simulation {
       options: SimOptions;
       fbos: Record<string, THREE.WebGLRenderTarget | null> = {
@@ -841,16 +845,16 @@ export default function LiquidEther({
       pressure!: Pressure;
       constructor(options?: Partial<SimOptions>) {
         this.options = {
-          iterations_poisson: 32,
-          iterations_viscous: 32,
+          iterations_poisson: 12,
+iterations_viscous: isViscous ? 8 : 0,
           mouse_force: 20,
-          resolution: 0.5,
+          resolution: isLowEnd ? 0.25 : 0.4,
           cursor_size: 100,
           viscous: 30,
           isBounce: false,
           dt: 0.014,
           isViscous: false,
-          BFECC: true,
+          BFECC: useBFECC,
           ...options
         };
         this.init();
@@ -1046,6 +1050,7 @@ export default function LiquidEther({
         this.output.resize();
       }
       render() {
+        // if (!Mouse.mouseMoved && !this.autoDriver?.active) return;
         if (this.autoDriver) this.autoDriver.update();
         Mouse.update();
         Common.update();
@@ -1133,7 +1138,7 @@ export default function LiquidEther({
           webglRef.current.pause();
         }
       },
-      { threshold: [0, 0.01, 0.1] }
+      { threshold: [0, 0.15, 0.1] }
     );
     io.observe(container);
     intersectionObserverRef.current = io;

@@ -98,6 +98,20 @@ export const BentoGridItem = ({
   const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
 
   const [copied, setCopied] = useState(false);
+    const [size, setSize] = useState(800);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 480px)");
+
+    const updateSize = () => {
+      setSize(mq.matches ? 600 : 800);
+    };
+
+    updateSize();
+    mq.addEventListener("change", updateSize);
+
+    return () => mq.removeEventListener("change", updateSize);
+  }, []);
 
   // const defaultOptions = {
   //   loop: copied,
@@ -230,12 +244,12 @@ const items = [
 
           {/* for the github 3d globe */}
           {id === 2 &&
-          <figure className="h-50 drop-shadow-[0px_0px_20px_#1E609F] -mt-20 flex items-start justify-center">
+          <figure className="h-60 drop-shadow-[0px_0px_20px_#1E609F] -mt-18 xs:-mt-22 flex items-start justify-center">
 
           <Globe
           ref={globeRef}
-          width={600}
-          height={600}
+          width={size}
+          height={size}
           showAtmosphere
           showGraticules
           globeImageUrl="https://unpkg.com/three-globe/example/img/earth-day.jpg"

@@ -80,7 +80,7 @@ const Hero = () => {
         <Starfield />
 
       </figure>
-      <figure className="absolute  z-100 bg-transparent inset-0 m-auto flex h-full w-full flex-col items-center justify-center gap-10  px-5 sm:px-10">
+      <figure className="absolute  z-1000 bg-transparent inset-0 m-auto flex h-full w-full flex-col items-center justify-center gap-10  px-5 sm:px-10">
         <Image
         width={100}
         height={100}
