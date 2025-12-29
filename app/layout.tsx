@@ -8,13 +8,13 @@ import ClientOnly from "@/components/ui/ClientOnly";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lumina AI",
-  description: "AI Chatbot SaaS Platform – Intelligent, Fast, and Conversational",
-  keywords: ["AI chatbot", "SaaS", "Lumina AI", "ChatGPT", "AI assistant"],
-  authors: [{ name: "mortis-web", url: "https://lumina-ai-1eua-43ixgfi0w-mortis-webs-projects.vercel.app/" }],
+  title: "LuminaDevEg - Software Development Startup",
+  description: "LuminaDevEg is a dynamic software development startup specializing in creating innovative digital solutions. Our expert team leverages cutting-edge technologies to deliver high-quality, scalable applications tailored to meet the unique needs of our clients.",
+  keywords: ["AI chatbot", "SaaS", "Lumina AI", "Software Development", "Lumina Development Egypt", "LuminaDevEg", "Lumina Egypt","ChatGPT", "AI assistant", "AI solutions", "Custom software", "Web development", "Mobile apps", "Tech startup", "Digital innovation"],
+  authors: [{ name: "Amr Khaled Eissa", url: "https://linkedin.com/in/amr-khaled-eissa" }, ],
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
