@@ -34,8 +34,7 @@
     "tailwindcss": "^4.1.18",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.167.1",
-    "three-globe": "^2.25.3",
-    "vercel": "^34.4.0"
+    "three-globe": "^2.25.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
