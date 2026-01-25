@@ -19,14 +19,14 @@ const Home = () => {
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto ">
         {/* <FloatingNav navItems={navItems} /> */}
       <div className="w-full">
-        <Navbar/>
+        {/* <Navbar/> */}
         <Hero />
-        <Grid />
-        <RecentProjects />
-        <Clients />
-        <Experience />
-        <Approach />
-        <Footer />
+        {/* <Grid /> */}
+        {/* <RecentProjects /> */}
+        {/* <Clients /> */}
+        {/* <Experience /> */}
+        {/* <Approach /> */}
+        {/* <Footer /> */}
       </div>
     </main>
     </LenisProvider>
